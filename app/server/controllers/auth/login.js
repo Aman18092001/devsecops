@@ -8,7 +8,6 @@ const login = async (req, res, next) => {
     try {
         const formatedEmail = email.toLowerCase();
         const queryEmail = String(formatedEmail);
-
         const findedUser = await User.findOne({
             email: queryEmail
         });

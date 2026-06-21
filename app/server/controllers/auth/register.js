@@ -3,18 +3,11 @@ const bcrypt = require('bcrypt');
 const joi = require('joi');
 
 
-
-
 const register = async (req, res, next) => {
-
     // Validate the request body
     const { error: validationError } = validateUser(req.body);
-
-
     const { name, email, password } = req.body;
-
     try {
-
         if (validationError) {
             const error = new Error(validationError.details[0].message);
             error.statusCode = 400; // Bad Request
@@ -37,7 +30,7 @@ const register = async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             name: formatedName,
-            email: formatedEmail,
+            email: queryEmail,
             password: hashedPassword
         });
         const savedUser = await newUser.save();
