@@ -25,3 +25,21 @@ repos:
         entry: bash -c 'cd app/client && npx eslint src'
         language: system
         pass_filenames: false
+
+  # Backend ESLint
+  - repo: local
+    hooks:
+      - id: backend-eslint
+        name: Backend ESLint
+        entry: bash -c 'cd app/server && npx eslint .'
+        language: system
+        pass_filenames: false
+
+  # SAST - Semgrep
+  - repo: local
+    hooks:
+      - id: semgrep
+        name: Semgrep SAST
+        entry: semgrep --config=auto app/
+        language: system
+        pass_filenames: false
