@@ -443,4 +443,3 @@ You decide hook IDs
 --exit-warning ---simply bcz this is argument of njsscan that tell does not exit immediatly show warning first
 pass_filename:false This false we set when i want to append changes files means scan all files...if we want only scan that file which was changed only then ...we write true
 ```
-
