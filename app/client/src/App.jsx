@@ -20,6 +20,7 @@ import Footer from './components/navbar/Footer';
 
 const App = () => {
   return (
+    <>		  
     <Routes>
       {/* 🔁 Redirect base path to login */}
       <Route path="/" element={<Navigate to="/login" />} />
@@ -45,8 +46,10 @@ const App = () => {
       <Route path="/contactus" element={<PrivateRoute><ContactUs /></PrivateRoute>} />
       <Route path="/aboutus" element={<AboutUs />} />
     </Routes>
-  );
-  <Footer />;
+  
+  <Footer />
+  </>
+   );	  
 };
 
 export default App;
