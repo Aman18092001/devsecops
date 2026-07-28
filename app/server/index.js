@@ -23,9 +23,9 @@ app.use(
 app.use('/', homeRoutes);
 app.use('/user/auth', userRoutes);
 
-app.get('/',(req,res)=>{
-    res.send('API is running smoothly')
-})
+#app.get('/',(req,res)=>{
+#   res.send('API is running smoothly')
+#})
 // Error Handler
 app.use((error, req, res, next) => {
     const message = error.message || 'Internal Server Error';
