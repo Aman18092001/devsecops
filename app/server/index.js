@@ -23,17 +23,10 @@ app.use(
 app.use('/', homeRoutes);
 app.use('/user/auth', userRoutes);
 
-<<<<<<< HEAD
 
-//app.get('/',(req,res)=>{
- //   res.send('API is running smoothly')
-//})
-
-=======
 //app.get('/',(req,res)=>{
 //   res.send('API is running smoothly')
 //})
->>>>>>> bf14448 (Your updated commit message)
 // Error Handler
 app.use((error, req, res, next) => {
     const message = error.message || 'Internal Server Error';
