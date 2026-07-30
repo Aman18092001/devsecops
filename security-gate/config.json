@@ -1,6 +1,6 @@
 {
-    "critical_limit": 0,
-    "score_limit": 30
+    "critical_limit": 5,
+    "score_limit": 250
 }
 
 
