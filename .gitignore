@@ -1,6 +1,16 @@
+# Terraform binaries & state
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+
+# Python / IDE
+__pycache__/
+*.pyc
 .env
-node_modules/
-.pre-commit-cache/
-.scannerwork/
-dist/
-build/
+.idea/
+.vscode/
+
+# Security Scans
+*report.json
