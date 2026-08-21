@@ -3,10 +3,10 @@
   "Trivy": {
     "Version": "0.71.2"
   },
-  "ReportID": "01a0245a-0453-7e52-a6e2-0061fe0d864f",
-  "CreatedAt": "2026-08-21T12:44:34.259940397Z",
+  "ReportID": "01a02538-83fd-76f6-8288-32cd218f4704",
+  "CreatedAt": "2026-08-21T16:47:35.933458835Z",
   "ArtifactID": "sha256:8aa826ab056473d6e1d7223abbbc8d82244183d287633176bdb659818e9a9d22",
-  "ArtifactName": "amanece20192022/devsecops:49",
+  "ArtifactName": "amanece20192022/devsecops:52",
   "ArtifactType": "container_image",
   "Metadata": {
     "Size": 270584320,
@@ -38,12 +38,15 @@
       "amanece20192022/devsecops:47",
       "amanece20192022/devsecops:48",
       "amanece20192022/devsecops:49",
+      "amanece20192022/devsecops:50",
+      "amanece20192022/devsecops:51",
+      "amanece20192022/devsecops:52",
       "amanece20192022/devsecops:latest"
     ],
     "RepoDigests": [
       "amanece20192022/devsecops@sha256:04a81fccfb62d16d0db2b5e31226555b9abefc41888fb8609030f8990caaad4f"
     ],
-    "Reference": "amanece20192022/devsecops:49",
+    "Reference": "amanece20192022/devsecops:52",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-08-21T10:18:56.913682721Z",
@@ -203,7 +206,7 @@
   },
   "Results": [
     {
-      "Target": "amanece20192022/devsecops:49 (alpine 3.23.4)",
+      "Target": "amanece20192022/devsecops:52 (alpine 3.23.4)",
       "Class": "os-pkgs",
       "Type": "alpine",
       "Packages": [
@@ -835,7 +838,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:69de1b2b0864bfa00293fbc42b6c2a8d54832333d18054986e414037d5d2f187",
+          "Fingerprint": "sha256:6deb96dfcca0ca95e11c20104cf0920267eaa9e652bf56b15c4b7f1cc9948a45",
           "Title": "openssl: Heap Use-After-Free in OpenSSL PKCS7_verify()",
           "Description": "Issue summary: A specially crafted PKCS#7 or S/MIME signed message could\ntrigger a use-after-free during PKCS#7 signature verification.\n\nImpact summary: A use-after-free may result in process crashes, heap\ncorruption, or potentially remote code execution.\n\nWhen processing a PKCS#7 or S/MIME signed message, if the SignedData\ndigestAlgorithms field is present as an empty ASN.1 SET, OpenSSL may\nincorrectly free a caller-owned BIO during PKCS7_verify(). A subsequent\nuse of the BIO by the calling application results in a use-after-free\ncondition.\n\nIn the common case this occurs when the application later calls\nBIO_free() on the BIO originally passed to PKCS7_verify(). Depending\non allocator behavior and application-specific BIO usage patterns, this\nmay result in a crash or other memory corruption. In some application\ncontexts this may potentially be exploitable for remote code execution.\n\nApplications that process PKCS#7 or S/MIME signed messages using OpenSSL\nPKCS#7 APIs may be affected. Applications using the CMS APIs for this\nprocessing are not affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "HIGH",
@@ -881,6 +884,20 @@
             "https://access.redhat.com/errata/RHSA-2026:47735",
             "https://access.redhat.com/errata/RHSA-2026:47737",
             "https://access.redhat.com/security/cve/CVE-2026-45447",
+            "https://bugzilla.redhat.com/2481879",
+            "https://bugzilla.redhat.com/2481880",
+            "https://bugzilla.redhat.com/2481881",
+            "https://bugzilla.redhat.com/2481882",
+            "https://bugzilla.redhat.com/2481884",
+            "https://bugzilla.redhat.com/2481885",
+            "https://bugzilla.redhat.com/2481887",
+            "https://bugzilla.redhat.com/2481890",
+            "https://bugzilla.redhat.com/2481891",
+            "https://bugzilla.redhat.com/2481892",
+            "https://bugzilla.redhat.com/2481893",
+            "https://bugzilla.redhat.com/2481894",
+            "https://bugzilla.redhat.com/2481896",
+            "https://bugzilla.redhat.com/2481897",
             "https://bugzilla.redhat.com/2481898",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481879",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481880",
@@ -913,7 +930,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-44438.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f684-cpcq-j565",
             "https://github.com/openssl/openssl/commit/3aad5eb7af4de4ee0633c30a8541a54d9bbde63c",
@@ -959,7 +976,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:9f1bec7b052ddf191cce7b1b3ed6b664febcc279789ec000b52e68f6f86320d1",
+          "Fingerprint": "sha256:a49d308c20e26f4303394ae4f8981bcdc1d9a3e53f75fa0289002c98a3c32077",
           "Title": "openssl: CMS AuthEnvelopedData Processing May Accept Forged Messages",
           "Description": "Issue Summary: Cryptographic Message Services (CMS) processing fails to perform\nsufficient input validation on the cipher and tag length fields of\nAuthEnvelopedData containers, leading to various potential compromises.\n\nImpact Summary: Attackers making use of these vulnerabilities may achieve\nkey-equivalent functionality for a given CMS recipient and/or bypass integrity\nvalidation for a given message.\n\nIn one use case, an attacker may send a CMS message containing\nAuthEnvelopedData with the cipher specified as a non-AEAD cipher.  OpenSSL\nerroneously allows this selection, and attempts to decrypt and validate the\nmessage.\n\nAn on-path attacker who captures one legitimate AES-GCM AuthEnvelopedData\naddressed to the victim can re-emit it with the recipientInfos set left\nbyte-for-byte intact, so the victim's private key still unwraps the genuine CEK\n(the content-encryption key), but with the inner OID rewritten to AES-256-OFB\n(Output Feedback Mode, an unauthenticated keystream mode) and with an\nattacker-chosen IV and ciphertext. The victim initializes AES-256-OFB under the\nreal CEK, never consults the MAC field, and CMS_decrypt() returns success.\n\nIf the application under attack responds to the attacker with any indicator\nshowing success or failure of the decryption effort, it is possible for the\nattacker to use this as an oracle to obtain key equivalent functionality for the\nCEK used for the chosen recipient of the message.\n\nIn another use case, an attacker can reduce the tag length of the chosen AEAD\ncipher for a given AuthEnvelopedData container to be a single byte long,\nallowing an attacker to brute force CMS decryption, producing an integrity\nbypass for applications that trust CMS_decrypt() to reject modified content.\n\nThe FIPS modules are not affected by this issue.",
           "Severity": "MEDIUM",
@@ -988,6 +1005,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34182",
             "https://bugzilla.redhat.com/2481879",
@@ -1036,7 +1054,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f9v2-4w9p-2cwc",
             "https://github.com/openssl/openssl/commit/03c1f4d45fb963aee7d5833390c507cd290182bc",
@@ -1081,7 +1099,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:488d954c1253d5fe5f2e691d82e75ec7350e9119bf9d3e54af9bbc13c8e1e8ee",
+          "Fingerprint": "sha256:cf8f849726f68e30da421cd2093373461806f951ee17c125469992e27dd23ace",
           "Title": "openssl: Unbounded Memory Growth in the QUIC PATH_CHALLENGE Handler",
           "Description": "Issue summary: Remote peer may exhaust heap memory of the QUIC\nserver or client by flooding it with packets containing PATH_CHALLENGE\nframes.\n\nImpact summary: A malicious remote peer can cause an unbounded\nmemory allocation which can lead to an abnormal termination of the\napplication acting as a QUIC client or server and a Denial of Service.\n\nA remote peer may exhaust heap memory by flooding the local\nQUIC stack with PATH_CHALLENGE frames. The local QUIC stack\nallocates a PATH_RESPONSE frame for every PATH_CHALLENGE it receives.\nThe allocated PATH_RESPONSE frame gets freed only when the remote\npeer acknowledges reception of the PATH_RESPONSE frame which will\nnot be done by a malicious peer.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by\nthis issue. The QUIC stack is outside of OpenSSL FIPS module\nboundary.",
           "Severity": "MEDIUM",
@@ -1110,6 +1128,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34183",
             "https://bugzilla.redhat.com/2481879",
@@ -1158,7 +1177,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f5vx-f6jp-89j6",
             "https://github.com/openssl/openssl/commit/5b306efb0b3779dfdd0803b4afc9d08c91f11517",
@@ -1200,7 +1219,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:922ef5ead238ce436b284499a340cc329bee00d6cb8f8a224c20ea61555b2ae4",
+          "Fingerprint": "sha256:092c11f95a628be9997d8b871c941bf03c19e8ce715666d8e018d6e11968a2ee",
           "Title": "openssl: NULL pointer dereference in QUIC server initial packet handling",
           "Description": "Issue summary: Receiving a QUIC initial packet with an invalid token may\ntrigger a NULL pointer dereference in the OpenSSL QUIC server with\naddress validation disabled.\n\nImpact summary: NULL pointer dereference typically causes abnormal termination\nof the affected QUIC server process and a Denial of Service.\n\nIf the address validation is disabled in the OpenSSL QUIC server\nimplementation, an attacker can crash the server by sending an initial\npacket with an invalid or expired token.\n\nBy default, the client address validation is enabled in the OpenSSL QUIC server\nimplementation, which makes the default configuration not vulnerable\nto this issue. However if the SSL_LISTENER_FLAG_NO_VALIDATE is used with\nthe SSL_new_listener() call, the address validation is disabled making the\nvulnerable code reachable.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "MEDIUM",
@@ -1228,6 +1247,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42764",
             "https://bugzilla.redhat.com/2481879",
@@ -1276,7 +1296,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-5pg7-f6xv-j6m4",
             "https://github.com/openssl/openssl/commit/5e3ed291b8af0b03d5d3b9e56a1da69a187e9729",
@@ -1316,7 +1336,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:249419f0681de01dd32889091f2e885e54af727ee3e100156dea02f046c16f33",
+          "Fingerprint": "sha256:4f076cc504365df091bcdcd7a4d6cecb4afd371c4d7ee115a66657e49e1fac72",
           "Title": "openssl: AES-OCB IV Ignored on EVP_Cipher() Path",
           "Description": "Issue summary: When an application drives an AES-OCB context through the\npublic EVP_Cipher() one-shot interface, the application-supplied\ninitialisation vector (IV) is silently discarded.\n\nImpact summary: Every message encrypted under the same key uses the\nsame effective nonce regardless of the IV supplied by the caller,\nresulting in (key, nonce) reuse and loss of confidentiality.  If the\nsame code path is used to compute the authentication tag, the tag\ndepends only on the (key, IV) pair and not on the plaintext or\nciphertext, allowing universal forgery of arbitrary ciphertext from a\nsingle captured message.\n\nOpenSSL provides two ways to drive a cipher: the documented streaming\ninterface (EVP_CipherUpdate / EVP_CipherFinal_ex) and a lower-level\none-shot, EVP_Cipher(), whose documentation explicitly recommends\nagainst use by applications in favour of EVP_CipherUpdate() and\nEVP_CipherFinal_ex().  The OCB provider's streaming handler flushes\nthe application-supplied IV into the OCB context before processing\ndata; the one-shot handler did not.  Every call to EVP_Cipher() on an\nAES-OCB context therefore ran with the all-zero key-derived offset\nstate left by cipher initialisation, regardless of the caller's IV.\n\nIf EVP_EncryptFinal_ex() is subsequently used to obtain the\nauthentication tag, the deferred IV setup runs at that point and\nclears the running checksum that should have been accumulated over the\nplaintext.  The resulting tag is a function of (key, IV) only and\nverifies against any ciphertext produced under the same (key, IV)\npair.\n\nThe OpenSSL SSL/TLS implementation is not affected: AES-OCB is not a\nTLS cipher suite, and libssl does not call EVP_Cipher() in any case.\nApplications that drive AES-OCB through the documented streaming AEAD\nAPI (EVP_CipherUpdate / EVP_CipherFinal_ex) are not affected.  Only\napplications that combine the AES-OCB cipher with the EVP_Cipher()\none-shot API are vulnerable.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by\nthis issue, as AES-OCB is outside the OpenSSL FIPS module boundary.",
           "Severity": "MEDIUM",
@@ -1345,6 +1365,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-45445",
             "https://bugzilla.redhat.com/2481879",
@@ -1393,7 +1414,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-v446-xwfm-x7mr",
             "https://github.com/openssl/openssl/commit/323f0b6e7d530a4cb4336d50c88cb70f3ac2a451",
@@ -1437,7 +1458,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:c887033da020b725dc68e1ef7d477b370e09d01e61c019493354b349a152e9e3",
+          "Fingerprint": "sha256:376ebec53ea97d044e0a49bcd8a31a8657d77e970c68952ae902f20d16dc3199",
           "Title": "openssl: OpenSSL: Heap buffer over-read in ASN.1 decoding can lead to denial of service or information disclosure.",
           "Description": "Issue summary: Parsing a crafted DER-encoded ASN.1 structure with a primitive\nelement whose content exceeds 2 gigabytes in length may cause a heap buffer\nover-read on 64-bit Unix and Unix-like platforms.\n\nImpact summary: The heap buffer over-read may crash the application (Denial of\nService) or to load into the decoded ASN.1 object contents of memory beyond the\nend of the input buffer.  More typically such ASN.1 elements would instead be\ntruncated.\n\nAn integer truncation in OpenSSL's ASN.1 decoder causes the content length of\nan ASN.1 primitive element to be mishandled when it exceeds 2 gigabytes. In the\nworst case the truncated length is treated as a request to scan the binary\ncontent for a terminating zero byte, possibly causing OpenSSL to read either\nless than or beyond the end of the allocated buffer.\n\nApplications that pass attacker-supplied data to d2i_X509(), d2i_PKCS7(), or\nany other d2i_* decoding function are affected. OpenSSL's own command-line\ntools are not vulnerable, as data read through the BIO layer is checked before\nit reaches the affected code. The issue only affects 64-bit Unix and Unix-like\nplatforms; 32-bit platforms and 64-bit Windows are not affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue,\nas the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -1466,6 +1487,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34180",
             "https://bugzilla.redhat.com/2481879",
@@ -1514,7 +1536,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-3c8f-qq7h-7qv6",
             "https://github.com/openssl/openssl/commit/1c6908e4fa5fa568752221d8eaf561a809751e5d",
@@ -1559,7 +1581,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:b952a4a64600644f5304e3baa3d15cd102af2ae81570f7783ce80b86a00fa481",
+          "Fingerprint": "sha256:e4f31a723dd6b952384180e5867747e7feea86e913cd82fbb59f025bacae23b2",
           "Title": "openssl: PKCS#12 Files with PBMAC1 Are Accepted with Short HMAC Keys",
           "Description": "Issue Summary: The PKCS#12 file processing fails to perform sufficient input\nvalidation for files that use Password-Based Message Authentication Code 1\n(PBMAC1) integrity mechanism allowing a certificate and private key forgery.\n\nImpact Summary: An attacker impersonating a user can cause a service reading\nPKCS#12 files to accept forged certificates and private keys with a 1 in 256\nprobability.\n\nIf a service accepting PKCS#12 files is using passwords for authenticating\nthe received files, the attacker can create unencrypted PKCS#12 files that\nuse PBMAC1 authentication that specifies an HMAC key of only one byte, allowing\nthem to craft a file that will be accepted with a 1 in 256 probability.\nThat would then cause the service to accept a certificate and private key\ncontrolled by the attacker.\n\nThe FIPS modules are not affected by this issue, as the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -1587,6 +1609,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34181",
             "https://bugzilla.redhat.com/2481879",
@@ -1635,7 +1658,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-4jgc-cj59-f9mm",
             "https://github.com/openssl/openssl/commit/0300eb9ddce7a0895bf301a4b0c03a9da2313a0f",
@@ -1677,7 +1700,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:3d516f8e50cfcc8276a587bc7c677d287604ba57352630155f928526ce9a80e3",
+          "Fingerprint": "sha256:3004d1d80ef4314a04124ade960ed2ab954e7c28d2ff02ecd16cd97d6e9e7f0e",
           "Title": "openssl: Possible NULL Dereference in Password-Based CMS Decryption",
           "Description": "Issue summary: A specially crafted password-encrypted CMS message\ncan trigger a NULL pointer dereference during CMS decryption.\n\nImpact summary: This NULL pointer dereference leads to an application crash\nand a Denial of Service.\n\nThe CMS PasswordRecipientInfo.keyDerivationAlgorithm field is defined as\nOPTIONAL in the ASN.1 specification and may therefore be absent in specially\ncrafted inputs. During the password-based CMS decryption the OpenSSL\nCMS implementation dereferences this field without first checking whether it\nwas present.\n\nAn attacker who supplies such a CMS message to an application performing\npassword-based CMS decryption can trigger an application crash, leading to\na Denial of Service.\n\nApplications that process password-encrypted CMS messages may be affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -1706,6 +1729,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42766",
             "https://bugzilla.redhat.com/2481879",
@@ -1754,7 +1778,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-58mv-qqmv-gqgv",
             "https://github.com/openssl/openssl/commit/056d06c1918fafbb98c1c85a02e4c47cc4e199ce",
@@ -1799,7 +1823,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:1e4f29d8c96a746f0a6d22d31553320df252dca49ec85c8b84b4a9178a461959",
+          "Fingerprint": "sha256:142822b3c07f46a33a961db78c839e6b01a6dc3e4d9a878f2b064d95399f3fae",
           "Title": "openssl: NULL Pointer Dereference in CRMF EncryptedValue Decryption",
           "Description": "Issue summary: An attacker-controlled CMP (Certificate Management Protocol)\nserver could trigger a NULL pointer dereference in a CMP client application.\n\nImpact summary: A NULL pointer dereference causes a crash of the\napplication and a Denial of Service.\n\nAn attacker controlling a CMP server (or acting as a man-in-the-middle) could\ncraft a CMP response containing a CRMF (Certificate Request Message Format)\nCertRepMessage with an EncryptedValue structure where the symmAlg field\nhas an algorithm OID but no parameters field. When the OpenSSL CMP client\nprocesses this response, the NULL dereference occurs, causing a crash of\nthe CMP client.\n\nApplications that process untrusted CMP/CRMF messages may be affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -1828,6 +1852,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42767",
             "https://bugzilla.redhat.com/2481879",
@@ -1876,7 +1901,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-gxhg-7jx8-m22j",
             "https://github.com/openssl/openssl/commit/61a86a8cd73546c9fea916f3d304c1293e05c046",
@@ -1920,7 +1945,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:c7d42c8426723bcacb467a8e90cbd6cf9bd82b408fae088aedce69e356cd96bf",
+          "Fingerprint": "sha256:7d2f4e39f59359d092ea373669bd6c94d2119091317680ecfe4de2b9a29e3ba6",
           "Title": "openssl: Multi-RecipientInfo Bleichenbacher Oracle in CMS_decrypt() and PKCS7_decrypt()",
           "Description": "Issue summary: The CMS_decrypt and PKCS7_decrypt functions are vulnerable to\nBleichenbacher-style attack when an attacker is able to provide the CMS or\nS/MIME messages and observe the error code and/or decryption output.\n\nImpact summary: The Bleichenbacher-style attack allows an attacker to use the\nvictim's vulnerable application as a way to decrypt or sign messages with the\nvictim's private RSA key.\n\nThe attack is possible in 2 variants.\n\n1. The decryption API (CMS_decrypt(), PKCS7_decrypt()) is used without\nproviding the recipient certificate. In this case OpenSSL iterates over every\nKeyTransRecipientInfo (KTRI) without stopping at the first success.\n\nAn attacker who authors a message with two KTRI entries — the first one\nwrapping a real CEK under the victim's public key, the second with an\narbitrary probe ciphertext — obtains opportunity to iterate the 2nd KTRI to\nget a valid PKCS#1 v1.5 padding if the error code of the application is\navailable.\n\nThat is a Bleichenbacher oracle (Bleichenbacher, CRYPTO '98): an\nadaptive-chosen-ciphertext side channel from which the attacker decrypts any\nRSA ciphertext to the victim's key or forges any PKCS#1 v1.5 signature under\nit.\n\n2. When the decryption API (CMS_decrypt(), PKCS7_decrypt()) is provided with\nthe recipient certificate, and the recipient is not found, a random\nkey is substituted.\n\nAn attacker who authors a message and is able to compare both error code and\nthe result of the decryption, can mount a Bleichenbacher oracle.\n\nWe are not aware of any applications that provide a remote attacker\nan opportunity to mount an attack described in these scenarios. We consider\nthe existence of such application very unlikely, and for this reason this\nCVE has been evaluated as Low severity.\n\nTo avoid these attacks, when RSA PKCS#1 v1.5 Key Transport is in use, the\ninvoked EVP_PKEY_decrypt() will use the implicit rejection mechanism described\nin draft-irtf-cfrg-rsa-guidance. In previous OpenSSL releases the implicit\nrejection was explicitly disabled.\n\nThe implicit rejection mechanism always returns a plaintext value,\nthe symmetric key. This result is deterministic for the ciphertext and the\nprivate key.  The length of the decryption result can happen to match the\nlength of the key of the symmetric cipher that was used for the content\nencryption. When a certificate is not provided, the last RecipientInfo\nproducing a key that looks valid will be used. It may cause getting garbage\ncontent on decryption. As a proper way to deal with this a recipient\ncertificate has to be provided to identify the particular RecipientInfo for\ndecryption.\n\nThe FIPS modules in 4.0, 3.6, 3.5, and 3.4 are not affected by this issue, as\nCMS and S/MIME processing happens outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -1949,6 +1974,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42768",
             "https://bugzilla.redhat.com/2481879",
@@ -1997,7 +2023,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-5m8f-m8jv-3rp3",
             "https://github.com/openssl/openssl/commit/a2ca7b2d73e0ffc1eae183fe6e1741dac767cb4f",
@@ -2039,7 +2065,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:da5d7d035f23c81d27a95377850a2cfaafbd3244aa598497dd5e38616cda1aa5",
+          "Fingerprint": "sha256:c8aeccf35405720c3e8583f3c8bff1774a6b30af66738c541b93b7f62c188517",
           "Title": "openssl: Trust-Anchor Substitution via cert/issuer Typo in CMP rootCaKeyUpdate",
           "Description": "Issue Summary: An error in the callback used to verify the certificate\nprovided in a Root CA key update Certificate Management Protocol (CMP)\nmessage response rendered the certificate validation ineffectual, which\ncould lead to escalation of credentials from the Registration Authority (RA)\nlevel to the root Certification Authority (root CA) level.\n\nImpact Summary: The Registration Autority could replace the root CA\ncertificate for the CMP clients with an arbitrary root CA certificate.\n\nOne of the parts of the Certificate Management Protocol (CMP), specified in\nRFC 9810, is Root Certification Authority (root CA) key Rollover,\nwhich is sent by the server in a message with type 'id-it-rootCaKeyUpdate'.\nAs part of these messages, 'newWithOld' certificate, the new root CA\ncertificate signed with the old root CA key, is provided, and verifying its\nsignature is crucial for transferring the trust from the old CA key to the\nnew one.\n\nThe 'id-it-rootCaKeyUpdate' messages are expected to be processed with\nOSSL_CMP_get1_rootCaKeyUpdate(), that is expected to verify the 'newWithOld'\ncertificate.  A typo in the certificate chain building code led to adding\nan incorrect certificate ('newWithOld' instead of 'oldRoot') to the\ncertificate chain, rendering the certificate verification process ineffectual\n(only the issuer name and the algorithm OIDs were verified by other parts\nof the verification code).\n\nAn attacker who already has credentials that satisfy the CMP message\nprotection checks can generate a new key pair and use a crafted self-signed\ncertificate in its 'id-it-rootCaKeyUpdate' CMP messages which affected CMP\nclients would accept as a new trust anchor.\n\nSignificant preconditions for the attack (having valid RA-level credentials)\nare the reason the issue was assigned Low severity.\n\nThe FIPS modules are not affected by this issue, as the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -2068,6 +2094,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42769",
             "https://bugzilla.redhat.com/2481879",
@@ -2116,7 +2143,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-rpj2-p5pj-r33v",
             "https://github.com/openssl/openssl/commit/54d0989997e5fc26057009a9782c3441ce3842fb",
@@ -2158,7 +2185,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:5c9c4596f51be63dcbfbb173df51311bc491dd0671d41020440a2e75ad23dbfa",
+          "Fingerprint": "sha256:516ae23764a8a8fecc731808e6a15fbadfde74eeae98c0b584c81ec9ad9296ba",
           "Title": "openssl: FFC-DH Peer Validation Uses Attacker-Supplied q",
           "Description": "Issue summary: When EVP_PKEY_derive_set_peer() is called with a DHX (X9.42)\npeer key, the peer key is not properly checked for the subgroup membership.\n\nImpact summary: A malicious peer which presents an X9.42 key carrying the\nvictim's p and g parameters, a forged q = r (a small prime factor of the\ncofactor (p−1)/q_local), and a public value Y of order r can recover the\nvictim's private key after a small number of key exchange attempts.\n\nWhen EVP_PKEY_derive_set_peer() is called with a DHX (X9.42) peer key, the\nsubgroup membership check Y^q ≡ 1 (mod p) is performed using the peer's\nown q parameter, not the local key's q. The peer's domain parameters are\nthen matched against the domain parameters of the private key, but the value\nof q is not compared.\n\nA malicious peer who presents an X9.42 key carrying the victim's p, g,\na forged q = r (a small prime factor of the cofactor), and a public\nvalue Y of order r passes all checks. The shared secret then takes only\nr distinct values, leaking priv mod r. Repeating for each small-prime\nfactor of the cofactor and combining via CRT recovers the full private\nkey (Lim–Lee / small-subgroup-confinement attack).\n\nThe realistic attack surface is narrow: principally CMP deployments with\nlong-lived RA/CA DHX keys and bespoke enterprise or government applications\nusing X9.42 DHX static keys with interactive protocols and therefore this\nissue was assigned Low severity.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, 3.1.2 and 3.0 are affected by this\nissue.",
           "Severity": "LOW",
@@ -2187,6 +2214,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42770",
             "https://bugzilla.redhat.com/2481879",
@@ -2235,7 +2263,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-3cxm-476w-ghm2",
             "https://github.com/openssl/openssl/commit/3da5a516cd2635a320ff748503db2cef7c4b0f02",
@@ -2279,7 +2307,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:aee7d729ab3559839ca36ffa36716e7e0fa1f6ed8cec6a771c315b7346513aec",
+          "Fingerprint": "sha256:29ba2ce9537d41f1ffba98c517d61fdaeccd08c0d9c316d4650bcc6e486cd777",
           "Title": "openssl: Incorrect Tag Processing for Empty Messages in AES-GCM-SIV and AES-SIV modes",
           "Description": "Issue summary: The implementations of AES-SIV (RFC 5297) and AES-GCM-SIV\n(RFC 8452) mishandle the authentication of AAD (Additional Authenticated\nData) with an empty ciphertext allowing a forgery of such messages.\n\nImpact summary: An attacker can forge empty messages with arbitrary AAD\nto the victim's application using these ciphers.\n\nAES-SIV (RFC 5297) and AES-GCM-SIV (RFC 8452) are nonce-misuse-resistant AEAD\nmodes: they accept a key, nonce, optional AAD (bytes that are authenticated\nbut not encrypted), and plaintext, and produces ciphertext plus a 16-byte\ntag. On decrypt, `EVP_DecryptFinal_ex()` is documented to return success only\nif the tag is verified succesfully.\n\nIn OpenSSL's provider implementation of these ciphers, the expected tag is\ncomputed only when decryption function is invoked with non-empty data.\nIf the caller supplies AAD and then calls `EVP_DecryptFinal_ex()` without\ninvocation of the ciphertext update, which can happen when the received\nciphertext length is zero, the tag is never recalculated and still holds its\nall-zeros value.\n\nWhen AES-GCM-SIV is used, an attacker who sends arbitrary AAD, empty\nciphertext, and all-zeros tag passes authentication under any key they do not\nknow, single-shot. When AES-SIV is used, for mounting the attack it's\nnecessary for the application to reuse the decryption context without\nresetting the key.\n\nAES-SIV is implemented since OpenSSL 3.0. AES-GCM-SIV is implemented since\nOpenSSL 3.2.\n\nNo protocols implemented in OpenSSL itself (TLS/CMS/PKCS7/HPKE/QUIC) support\neither AES-GCM-SIV or AES-SIV. To mount an attack, the applications must\nimplement their own protocol and use the EVP interface. Also they must skip the\nciphertext update when a message with an empty ciphertext arrives.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as these algorithms are not FIPS approved and the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -2308,6 +2336,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-45446",
             "https://bugzilla.redhat.com/2481879",
@@ -2356,7 +2385,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-7phf-qpm5-q6p3",
             "https://github.com/openssl/openssl/commit/25b32cd9d41d2bc01b6abc425bb4baf2c2236fdc",
@@ -2400,7 +2429,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:29c36973c73e375352d4c5f085a3ae8914200496f00dc3010ddd07c5758e73b7",
+          "Fingerprint": "sha256:154c4cffaa96192e71e42abdfe07d9d85da543c999c808e655c699bc9719e333",
           "Title": "openssl: OpenSSL: Heap buffer overflow due to signed integer overflow in Unicode output sizing",
           "Description": "Issue summary: A signed integer overflow when sizing the destination\nbuffer for Unicode output in ASN1_mbstring_ncopy() can lead to a heap\nbuffer overflow.\n\nImpact summary: A heap buffer overflow may lead to a crash or possibly\nattacker controlled code execution or other undefined behaviour.\n\nIn ASN1_mbstring_copy() and ASN1_mbstring_ncopy() the destination\nsize for Unicode output is computed in a signed int: by left shift\nof the input character count for BMPSTRING (UTF-16) and\nUNIVERSALSTRING (UTF-32), and by summing per-character byte counts\nfor UTF8STRING. The calculation overflows when the input reaches\naround 2^30 characters. In the worst case (UNIVERSALSTRING at 2^30\ncharacters) the size wraps to zero, OPENSSL_malloc(1) is called, and\nthe subsequent character copy writes several gigabytes past the\none-byte allocation.\n\nX.509 certificate processing routes through ASN1_STRING_set_by_NID(),\nwhose DIRSTRING_TYPE mask excludes UNIVERSALSTRING and whose per-NID\nsize limits cap the input length; no network protocol or\ncertificate-handling path in OpenSSL exercises the overflow.\nTriggering the bug requires an application that calls\nASN1_mbstring_copy() or ASN1_mbstring_ncopy() directly, or registers\na custom string type via ASN1_STRING_TABLE_add(), with\nattacker-controlled input on the order of half a gigabyte or more.\nFor these reasons this issue was assigned Low severity.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by\nthis issue, as the affected code is outside the OpenSSL FIPS module\nboundary.",
           "Severity": "LOW",
@@ -2429,6 +2458,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-7383",
             "https://bugzilla.redhat.com/2481879",
@@ -2477,7 +2507,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-w853-v86g-gv7j",
             "https://github.com/openssl/openssl/commit/4f8d2bddaa2c8e06f9c33390ee1717059a6e4be6",
@@ -2522,7 +2552,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:44acdf6d1f62e151dc6a754f782513ced0a45835a10c0af611c3720ed18cb484",
+          "Fingerprint": "sha256:7b08e15990fe6e5ec056f94ab232ee672ffdc79bb907cc27783098085780e4eb",
           "Title": "openssl: OpenSSL: Denial of Service due to heap out-of-bounds read in CMS password-based decryption",
           "Description": "Issue summary: When CMS password-based decryption (RFC 3211 / PWRI key unwrap)\nprocesses attacker-supplied CMS data, an attacker-chosen stream-mode KEK\ncipher can trigger a heap out-of-bounds read in kek_unwrap_key().\n\nImpact summary: A heap buffer over-read may trigger a crash which leads to\nDenial of Service for an application if the input buffer ends at a memory\npage boundary and the following page is unmapped. There is no information\ndisclosure as the over-read bytes are not revealed to the attacker.\n\nThe key unwrapping function performs a check-byte test as specified in the\nRFC that reads 7 bytes from a heap allocation that is based on the wrapped\nkey length from the message. There is a minimum length check based on the\nblock length of the wrapping cipher. However the cipher is selected from\nan OID carried in the attacker's PWRI keyEncryptionAlgorithm with no\nrequirement that the cipher be a block cipher. When an attacker selects\na stream-mode cipher the guard will be ineffective and the allocated buffer\ncontaining the unwrapped key can be too small to fit the check-bytes\nspecified in the RFC and a buffer over-read can happen.\n\nApplications calling CMS_decrypt() or CMS_decrypt_set1_password()\n(equivalently openssl cms -decrypt -pwri_password ...) on untrusted CMS\ndata are vulnerable to this issue. No password knowledge is required: the\nover-read happens during the unwrap attempt before any authentication\nsucceeds.\n\nThe over-read is limited to a few bytes and is not written to output, so\nthere is no information disclosure. Triggering a crash requires the\nallocation to border unmapped memory, which is unlikely with the normal\nallocator.\n\nThe FIPS modules are not affected by this issue.",
           "Severity": "LOW",
@@ -2551,6 +2581,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-9076",
             "https://bugzilla.redhat.com/2481879",
@@ -2599,7 +2630,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-q98x-73c3-57gj",
             "https://github.com/openssl/openssl/commit/05b066366842f930fadd9a6e94df98030af431bb",
@@ -2644,7 +2675,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:b2ebfe6d012a8c2b294bf4516986d4e4ba11a4cf1290bc83ece15e64dda7658f",
+          "Fingerprint": "sha256:9308612bbfec0066c7cf8d6b9ea71d044fdc00989c6563b8e300fbac9077a3a2",
           "Title": "openssl: Heap Use-After-Free in OpenSSL PKCS7_verify()",
           "Description": "Issue summary: A specially crafted PKCS#7 or S/MIME signed message could\ntrigger a use-after-free during PKCS#7 signature verification.\n\nImpact summary: A use-after-free may result in process crashes, heap\ncorruption, or potentially remote code execution.\n\nWhen processing a PKCS#7 or S/MIME signed message, if the SignedData\ndigestAlgorithms field is present as an empty ASN.1 SET, OpenSSL may\nincorrectly free a caller-owned BIO during PKCS7_verify(). A subsequent\nuse of the BIO by the calling application results in a use-after-free\ncondition.\n\nIn the common case this occurs when the application later calls\nBIO_free() on the BIO originally passed to PKCS7_verify(). Depending\non allocator behavior and application-specific BIO usage patterns, this\nmay result in a crash or other memory corruption. In some application\ncontexts this may potentially be exploitable for remote code execution.\n\nApplications that process PKCS#7 or S/MIME signed messages using OpenSSL\nPKCS#7 APIs may be affected. Applications using the CMS APIs for this\nprocessing are not affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "HIGH",
@@ -2690,6 +2721,20 @@
             "https://access.redhat.com/errata/RHSA-2026:47735",
             "https://access.redhat.com/errata/RHSA-2026:47737",
             "https://access.redhat.com/security/cve/CVE-2026-45447",
+            "https://bugzilla.redhat.com/2481879",
+            "https://bugzilla.redhat.com/2481880",
+            "https://bugzilla.redhat.com/2481881",
+            "https://bugzilla.redhat.com/2481882",
+            "https://bugzilla.redhat.com/2481884",
+            "https://bugzilla.redhat.com/2481885",
+            "https://bugzilla.redhat.com/2481887",
+            "https://bugzilla.redhat.com/2481890",
+            "https://bugzilla.redhat.com/2481891",
+            "https://bugzilla.redhat.com/2481892",
+            "https://bugzilla.redhat.com/2481893",
+            "https://bugzilla.redhat.com/2481894",
+            "https://bugzilla.redhat.com/2481896",
+            "https://bugzilla.redhat.com/2481897",
             "https://bugzilla.redhat.com/2481898",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481879",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481880",
@@ -2722,7 +2767,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-44438.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f684-cpcq-j565",
             "https://github.com/openssl/openssl/commit/3aad5eb7af4de4ee0633c30a8541a54d9bbde63c",
@@ -2768,7 +2813,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:8fe5ebdc4c72a6684987dceafa9b2fdcc69350d19f9ec9628e98683f55cbab2a",
+          "Fingerprint": "sha256:1da1783a70c97324af652238e9c8a0797bc15ddc6130be2705576ff37f82f510",
           "Title": "openssl: CMS AuthEnvelopedData Processing May Accept Forged Messages",
           "Description": "Issue Summary: Cryptographic Message Services (CMS) processing fails to perform\nsufficient input validation on the cipher and tag length fields of\nAuthEnvelopedData containers, leading to various potential compromises.\n\nImpact Summary: Attackers making use of these vulnerabilities may achieve\nkey-equivalent functionality for a given CMS recipient and/or bypass integrity\nvalidation for a given message.\n\nIn one use case, an attacker may send a CMS message containing\nAuthEnvelopedData with the cipher specified as a non-AEAD cipher.  OpenSSL\nerroneously allows this selection, and attempts to decrypt and validate the\nmessage.\n\nAn on-path attacker who captures one legitimate AES-GCM AuthEnvelopedData\naddressed to the victim can re-emit it with the recipientInfos set left\nbyte-for-byte intact, so the victim's private key still unwraps the genuine CEK\n(the content-encryption key), but with the inner OID rewritten to AES-256-OFB\n(Output Feedback Mode, an unauthenticated keystream mode) and with an\nattacker-chosen IV and ciphertext. The victim initializes AES-256-OFB under the\nreal CEK, never consults the MAC field, and CMS_decrypt() returns success.\n\nIf the application under attack responds to the attacker with any indicator\nshowing success or failure of the decryption effort, it is possible for the\nattacker to use this as an oracle to obtain key equivalent functionality for the\nCEK used for the chosen recipient of the message.\n\nIn another use case, an attacker can reduce the tag length of the chosen AEAD\ncipher for a given AuthEnvelopedData container to be a single byte long,\nallowing an attacker to brute force CMS decryption, producing an integrity\nbypass for applications that trust CMS_decrypt() to reject modified content.\n\nThe FIPS modules are not affected by this issue.",
           "Severity": "MEDIUM",
@@ -2797,6 +2842,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34182",
             "https://bugzilla.redhat.com/2481879",
@@ -2845,7 +2891,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f9v2-4w9p-2cwc",
             "https://github.com/openssl/openssl/commit/03c1f4d45fb963aee7d5833390c507cd290182bc",
@@ -2890,7 +2936,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:492a99840f7005be2ca9814ae96d84424ef2eb219cbc00821dc46a148ef8e8ab",
+          "Fingerprint": "sha256:ad1f19e424c03100bcbbf206fb41ceaacce6492f72dad6618234493c1f7a9683",
           "Title": "openssl: Unbounded Memory Growth in the QUIC PATH_CHALLENGE Handler",
           "Description": "Issue summary: Remote peer may exhaust heap memory of the QUIC\nserver or client by flooding it with packets containing PATH_CHALLENGE\nframes.\n\nImpact summary: A malicious remote peer can cause an unbounded\nmemory allocation which can lead to an abnormal termination of the\napplication acting as a QUIC client or server and a Denial of Service.\n\nA remote peer may exhaust heap memory by flooding the local\nQUIC stack with PATH_CHALLENGE frames. The local QUIC stack\nallocates a PATH_RESPONSE frame for every PATH_CHALLENGE it receives.\nThe allocated PATH_RESPONSE frame gets freed only when the remote\npeer acknowledges reception of the PATH_RESPONSE frame which will\nnot be done by a malicious peer.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by\nthis issue. The QUIC stack is outside of OpenSSL FIPS module\nboundary.",
           "Severity": "MEDIUM",
@@ -2919,6 +2965,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34183",
             "https://bugzilla.redhat.com/2481879",
@@ -2967,7 +3014,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-f5vx-f6jp-89j6",
             "https://github.com/openssl/openssl/commit/5b306efb0b3779dfdd0803b4afc9d08c91f11517",
@@ -3009,7 +3056,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:2ac4d070ff7aa06a95c4d429d88c54cac136228e405db06bdcbd09e1222ac468",
+          "Fingerprint": "sha256:2a05190ae83e2899b06023dc7c28f1324504235bb141aded7bb09b3dbd26fb1b",
           "Title": "openssl: NULL pointer dereference in QUIC server initial packet handling",
           "Description": "Issue summary: Receiving a QUIC initial packet with an invalid token may\ntrigger a NULL pointer dereference in the OpenSSL QUIC server with\naddress validation disabled.\n\nImpact summary: NULL pointer dereference typically causes abnormal termination\nof the affected QUIC server process and a Denial of Service.\n\nIf the address validation is disabled in the OpenSSL QUIC server\nimplementation, an attacker can crash the server by sending an initial\npacket with an invalid or expired token.\n\nBy default, the client address validation is enabled in the OpenSSL QUIC server\nimplementation, which makes the default configuration not vulnerable\nto this issue. However if the SSL_LISTENER_FLAG_NO_VALIDATE is used with\nthe SSL_new_listener() call, the address validation is disabled making the\nvulnerable code reachable.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "MEDIUM",
@@ -3037,6 +3084,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42764",
             "https://bugzilla.redhat.com/2481879",
@@ -3085,7 +3133,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-5pg7-f6xv-j6m4",
             "https://github.com/openssl/openssl/commit/5e3ed291b8af0b03d5d3b9e56a1da69a187e9729",
@@ -3125,7 +3173,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:5e67418e14eed6da190407143d61ef51619d1117b26e961507c240bf61c9ef2d",
+          "Fingerprint": "sha256:10afa6361e58bfe71657b95713454d8fb164b13c78e356b60f28daa705bf2c36",
           "Title": "openssl: AES-OCB IV Ignored on EVP_Cipher() Path",
           "Description": "Issue summary: When an application drives an AES-OCB context through the\npublic EVP_Cipher() one-shot interface, the application-supplied\ninitialisation vector (IV) is silently discarded.\n\nImpact summary: Every message encrypted under the same key uses the\nsame effective nonce regardless of the IV supplied by the caller,\nresulting in (key, nonce) reuse and loss of confidentiality.  If the\nsame code path is used to compute the authentication tag, the tag\ndepends only on the (key, IV) pair and not on the plaintext or\nciphertext, allowing universal forgery of arbitrary ciphertext from a\nsingle captured message.\n\nOpenSSL provides two ways to drive a cipher: the documented streaming\ninterface (EVP_CipherUpdate / EVP_CipherFinal_ex) and a lower-level\none-shot, EVP_Cipher(), whose documentation explicitly recommends\nagainst use by applications in favour of EVP_CipherUpdate() and\nEVP_CipherFinal_ex().  The OCB provider's streaming handler flushes\nthe application-supplied IV into the OCB context before processing\ndata; the one-shot handler did not.  Every call to EVP_Cipher() on an\nAES-OCB context therefore ran with the all-zero key-derived offset\nstate left by cipher initialisation, regardless of the caller's IV.\n\nIf EVP_EncryptFinal_ex() is subsequently used to obtain the\nauthentication tag, the deferred IV setup runs at that point and\nclears the running checksum that should have been accumulated over the\nplaintext.  The resulting tag is a function of (key, IV) only and\nverifies against any ciphertext produced under the same (key, IV)\npair.\n\nThe OpenSSL SSL/TLS implementation is not affected: AES-OCB is not a\nTLS cipher suite, and libssl does not call EVP_Cipher() in any case.\nApplications that drive AES-OCB through the documented streaming AEAD\nAPI (EVP_CipherUpdate / EVP_CipherFinal_ex) are not affected.  Only\napplications that combine the AES-OCB cipher with the EVP_Cipher()\none-shot API are vulnerable.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by\nthis issue, as AES-OCB is outside the OpenSSL FIPS module boundary.",
           "Severity": "MEDIUM",
@@ -3154,6 +3202,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-45445",
             "https://bugzilla.redhat.com/2481879",
@@ -3202,7 +3251,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-v446-xwfm-x7mr",
             "https://github.com/openssl/openssl/commit/323f0b6e7d530a4cb4336d50c88cb70f3ac2a451",
@@ -3246,7 +3295,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:6ce4b283493dcc24fa5a71240948c9cfb0f32409eb7715b74efa3898bdc2bb8e",
+          "Fingerprint": "sha256:9bce1225e044d8cd8d101343be483dbb62af31190c0387240baff59008fee066",
           "Title": "openssl: OpenSSL: Heap buffer over-read in ASN.1 decoding can lead to denial of service or information disclosure.",
           "Description": "Issue summary: Parsing a crafted DER-encoded ASN.1 structure with a primitive\nelement whose content exceeds 2 gigabytes in length may cause a heap buffer\nover-read on 64-bit Unix and Unix-like platforms.\n\nImpact summary: The heap buffer over-read may crash the application (Denial of\nService) or to load into the decoded ASN.1 object contents of memory beyond the\nend of the input buffer.  More typically such ASN.1 elements would instead be\ntruncated.\n\nAn integer truncation in OpenSSL's ASN.1 decoder causes the content length of\nan ASN.1 primitive element to be mishandled when it exceeds 2 gigabytes. In the\nworst case the truncated length is treated as a request to scan the binary\ncontent for a terminating zero byte, possibly causing OpenSSL to read either\nless than or beyond the end of the allocated buffer.\n\nApplications that pass attacker-supplied data to d2i_X509(), d2i_PKCS7(), or\nany other d2i_* decoding function are affected. OpenSSL's own command-line\ntools are not vulnerable, as data read through the BIO layer is checked before\nit reaches the affected code. The issue only affects 64-bit Unix and Unix-like\nplatforms; 32-bit platforms and 64-bit Windows are not affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue,\nas the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3275,6 +3324,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34180",
             "https://bugzilla.redhat.com/2481879",
@@ -3323,7 +3373,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-3c8f-qq7h-7qv6",
             "https://github.com/openssl/openssl/commit/1c6908e4fa5fa568752221d8eaf561a809751e5d",
@@ -3368,7 +3418,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:7db9e980c7efeee81bac6767ad7cab76837a5d886b2a00e44977279806893f6d",
+          "Fingerprint": "sha256:214087800173f6332f25bc02af48cd7a8600264675e134469ca7faa9d8ef6369",
           "Title": "openssl: PKCS#12 Files with PBMAC1 Are Accepted with Short HMAC Keys",
           "Description": "Issue Summary: The PKCS#12 file processing fails to perform sufficient input\nvalidation for files that use Password-Based Message Authentication Code 1\n(PBMAC1) integrity mechanism allowing a certificate and private key forgery.\n\nImpact Summary: An attacker impersonating a user can cause a service reading\nPKCS#12 files to accept forged certificates and private keys with a 1 in 256\nprobability.\n\nIf a service accepting PKCS#12 files is using passwords for authenticating\nthe received files, the attacker can create unencrypted PKCS#12 files that\nuse PBMAC1 authentication that specifies an HMAC key of only one byte, allowing\nthem to craft a file that will be accepted with a 1 in 256 probability.\nThat would then cause the service to accept a certificate and private key\ncontrolled by the attacker.\n\nThe FIPS modules are not affected by this issue, as the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3396,6 +3446,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-34181",
             "https://bugzilla.redhat.com/2481879",
@@ -3444,7 +3495,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-4jgc-cj59-f9mm",
             "https://github.com/openssl/openssl/commit/0300eb9ddce7a0895bf301a4b0c03a9da2313a0f",
@@ -3486,7 +3537,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:e497fc6be58ca055500ed4b50cb437503f0a3debfbec78d2a7498bbf6e1df82c",
+          "Fingerprint": "sha256:024faf4bff3023a617145dee470bc1916a82f49fbf82427788b744639f773abd",
           "Title": "openssl: Possible NULL Dereference in Password-Based CMS Decryption",
           "Description": "Issue summary: A specially crafted password-encrypted CMS message\ncan trigger a NULL pointer dereference during CMS decryption.\n\nImpact summary: This NULL pointer dereference leads to an application crash\nand a Denial of Service.\n\nThe CMS PasswordRecipientInfo.keyDerivationAlgorithm field is defined as\nOPTIONAL in the ASN.1 specification and may therefore be absent in specially\ncrafted inputs. During the password-based CMS decryption the OpenSSL\nCMS implementation dereferences this field without first checking whether it\nwas present.\n\nAn attacker who supplies such a CMS message to an application performing\npassword-based CMS decryption can trigger an application crash, leading to\na Denial of Service.\n\nApplications that process password-encrypted CMS messages may be affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3515,6 +3566,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42766",
             "https://bugzilla.redhat.com/2481879",
@@ -3563,7 +3615,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-58mv-qqmv-gqgv",
             "https://github.com/openssl/openssl/commit/056d06c1918fafbb98c1c85a02e4c47cc4e199ce",
@@ -3608,7 +3660,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:7395324d9ca6b83b161190d16034da1b6d57ca72d6b0bd506bd51dfdb752de22",
+          "Fingerprint": "sha256:f43ec9dcd367fe9d35e810c4dfe0c2c5482a41e6ccfcf26168a4fc998d9c6f8d",
           "Title": "openssl: NULL Pointer Dereference in CRMF EncryptedValue Decryption",
           "Description": "Issue summary: An attacker-controlled CMP (Certificate Management Protocol)\nserver could trigger a NULL pointer dereference in a CMP client application.\n\nImpact summary: A NULL pointer dereference causes a crash of the\napplication and a Denial of Service.\n\nAn attacker controlling a CMP server (or acting as a man-in-the-middle) could\ncraft a CMP response containing a CRMF (Certificate Request Message Format)\nCertRepMessage with an EncryptedValue structure where the symmAlg field\nhas an algorithm OID but no parameters field. When the OpenSSL CMP client\nprocesses this response, the NULL dereference occurs, causing a crash of\nthe CMP client.\n\nApplications that process untrusted CMP/CRMF messages may be affected.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as the affected code is outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3637,6 +3689,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42767",
             "https://bugzilla.redhat.com/2481879",
@@ -3685,7 +3738,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-gxhg-7jx8-m22j",
             "https://github.com/openssl/openssl/commit/61a86a8cd73546c9fea916f3d304c1293e05c046",
@@ -3729,7 +3782,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:0504e1393a844ffcca701169e2af05ccd1d09266859ad3d92ff190f99ab503b6",
+          "Fingerprint": "sha256:cd942080d0255f14ea1a40f4a9603e3b12799be791c308b75d8155bf1c054bc7",
           "Title": "openssl: Multi-RecipientInfo Bleichenbacher Oracle in CMS_decrypt() and PKCS7_decrypt()",
           "Description": "Issue summary: The CMS_decrypt and PKCS7_decrypt functions are vulnerable to\nBleichenbacher-style attack when an attacker is able to provide the CMS or\nS/MIME messages and observe the error code and/or decryption output.\n\nImpact summary: The Bleichenbacher-style attack allows an attacker to use the\nvictim's vulnerable application as a way to decrypt or sign messages with the\nvictim's private RSA key.\n\nThe attack is possible in 2 variants.\n\n1. The decryption API (CMS_decrypt(), PKCS7_decrypt()) is used without\nproviding the recipient certificate. In this case OpenSSL iterates over every\nKeyTransRecipientInfo (KTRI) without stopping at the first success.\n\nAn attacker who authors a message with two KTRI entries — the first one\nwrapping a real CEK under the victim's public key, the second with an\narbitrary probe ciphertext — obtains opportunity to iterate the 2nd KTRI to\nget a valid PKCS#1 v1.5 padding if the error code of the application is\navailable.\n\nThat is a Bleichenbacher oracle (Bleichenbacher, CRYPTO '98): an\nadaptive-chosen-ciphertext side channel from which the attacker decrypts any\nRSA ciphertext to the victim's key or forges any PKCS#1 v1.5 signature under\nit.\n\n2. When the decryption API (CMS_decrypt(), PKCS7_decrypt()) is provided with\nthe recipient certificate, and the recipient is not found, a random\nkey is substituted.\n\nAn attacker who authors a message and is able to compare both error code and\nthe result of the decryption, can mount a Bleichenbacher oracle.\n\nWe are not aware of any applications that provide a remote attacker\nan opportunity to mount an attack described in these scenarios. We consider\nthe existence of such application very unlikely, and for this reason this\nCVE has been evaluated as Low severity.\n\nTo avoid these attacks, when RSA PKCS#1 v1.5 Key Transport is in use, the\ninvoked EVP_PKEY_decrypt() will use the implicit rejection mechanism described\nin draft-irtf-cfrg-rsa-guidance. In previous OpenSSL releases the implicit\nrejection was explicitly disabled.\n\nThe implicit rejection mechanism always returns a plaintext value,\nthe symmetric key. This result is deterministic for the ciphertext and the\nprivate key.  The length of the decryption result can happen to match the\nlength of the key of the symmetric cipher that was used for the content\nencryption. When a certificate is not provided, the last RecipientInfo\nproducing a key that looks valid will be used. It may cause getting garbage\ncontent on decryption. As a proper way to deal with this a recipient\ncertificate has to be provided to identify the particular RecipientInfo for\ndecryption.\n\nThe FIPS modules in 4.0, 3.6, 3.5, and 3.4 are not affected by this issue, as\nCMS and S/MIME processing happens outside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3758,6 +3811,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42768",
             "https://bugzilla.redhat.com/2481879",
@@ -3806,7 +3860,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-5m8f-m8jv-3rp3",
             "https://github.com/openssl/openssl/commit/a2ca7b2d73e0ffc1eae183fe6e1741dac767cb4f",
@@ -3848,7 +3902,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:d5c866cfc23ddefcd606eb6a6a4b7263497622d244f163138cb43a3ccd3cd271",
+          "Fingerprint": "sha256:a4d26db7237b3b56bd68f7010c60f663309b31ffd5cd068d024a6e487bc1e0cc",
           "Title": "openssl: Trust-Anchor Substitution via cert/issuer Typo in CMP rootCaKeyUpdate",
           "Description": "Issue Summary: An error in the callback used to verify the certificate\nprovided in a Root CA key update Certificate Management Protocol (CMP)\nmessage response rendered the certificate validation ineffectual, which\ncould lead to escalation of credentials from the Registration Authority (RA)\nlevel to the root Certification Authority (root CA) level.\n\nImpact Summary: The Registration Autority could replace the root CA\ncertificate for the CMP clients with an arbitrary root CA certificate.\n\nOne of the parts of the Certificate Management Protocol (CMP), specified in\nRFC 9810, is Root Certification Authority (root CA) key Rollover,\nwhich is sent by the server in a message with type 'id-it-rootCaKeyUpdate'.\nAs part of these messages, 'newWithOld' certificate, the new root CA\ncertificate signed with the old root CA key, is provided, and verifying its\nsignature is crucial for transferring the trust from the old CA key to the\nnew one.\n\nThe 'id-it-rootCaKeyUpdate' messages are expected to be processed with\nOSSL_CMP_get1_rootCaKeyUpdate(), that is expected to verify the 'newWithOld'\ncertificate.  A typo in the certificate chain building code led to adding\nan incorrect certificate ('newWithOld' instead of 'oldRoot') to the\ncertificate chain, rendering the certificate verification process ineffectual\n(only the issuer name and the algorithm OIDs were verified by other parts\nof the verification code).\n\nAn attacker who already has credentials that satisfy the CMP message\nprotection checks can generate a new key pair and use a crafted self-signed\ncertificate in its 'id-it-rootCaKeyUpdate' CMP messages which affected CMP\nclients would accept as a new trust anchor.\n\nSignificant preconditions for the attack (having valid RA-level credentials)\nare the reason the issue was assigned Low severity.\n\nThe FIPS modules are not affected by this issue, as the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -3877,6 +3931,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42769",
             "https://bugzilla.redhat.com/2481879",
@@ -3925,7 +3980,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-rpj2-p5pj-r33v",
             "https://github.com/openssl/openssl/commit/54d0989997e5fc26057009a9782c3441ce3842fb",
@@ -3967,7 +4022,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:459debf0265d449eb2175b1157aea99bb9f35dc9856100f8e4998f8928e5afeb",
+          "Fingerprint": "sha256:32d6487e9aec6e7f73b4b312ab80a26da394d66d7517415dff76f43aa891b8ad",
           "Title": "openssl: FFC-DH Peer Validation Uses Attacker-Supplied q",
           "Description": "Issue summary: When EVP_PKEY_derive_set_peer() is called with a DHX (X9.42)\npeer key, the peer key is not properly checked for the subgroup membership.\n\nImpact summary: A malicious peer which presents an X9.42 key carrying the\nvictim's p and g parameters, a forged q = r (a small prime factor of the\ncofactor (p−1)/q_local), and a public value Y of order r can recover the\nvictim's private key after a small number of key exchange attempts.\n\nWhen EVP_PKEY_derive_set_peer() is called with a DHX (X9.42) peer key, the\nsubgroup membership check Y^q ≡ 1 (mod p) is performed using the peer's\nown q parameter, not the local key's q. The peer's domain parameters are\nthen matched against the domain parameters of the private key, but the value\nof q is not compared.\n\nA malicious peer who presents an X9.42 key carrying the victim's p, g,\na forged q = r (a small prime factor of the cofactor), and a public\nvalue Y of order r passes all checks. The shared secret then takes only\nr distinct values, leaking priv mod r. Repeating for each small-prime\nfactor of the cofactor and combining via CRT recovers the full private\nkey (Lim–Lee / small-subgroup-confinement attack).\n\nThe realistic attack surface is narrow: principally CMP deployments with\nlong-lived RA/CA DHX keys and bespoke enterprise or government applications\nusing X9.42 DHX static keys with interactive protocols and therefore this\nissue was assigned Low severity.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, 3.1.2 and 3.0 are affected by this\nissue.",
           "Severity": "LOW",
@@ -3996,6 +4051,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-42770",
             "https://bugzilla.redhat.com/2481879",
@@ -4044,7 +4100,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-3cxm-476w-ghm2",
             "https://github.com/openssl/openssl/commit/3da5a516cd2635a320ff748503db2cef7c4b0f02",
@@ -4088,7 +4144,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:a191278f0ac6a55441586a04aae9df88d9f2aab2b26262d52ef246c72e642550",
+          "Fingerprint": "sha256:dd52eff11ff8c796b656d61d63803836e435da1b96d223e0cf8ad8f0931c9b61",
           "Title": "openssl: Incorrect Tag Processing for Empty Messages in AES-GCM-SIV and AES-SIV modes",
           "Description": "Issue summary: The implementations of AES-SIV (RFC 5297) and AES-GCM-SIV\n(RFC 8452) mishandle the authentication of AAD (Additional Authenticated\nData) with an empty ciphertext allowing a forgery of such messages.\n\nImpact summary: An attacker can forge empty messages with arbitrary AAD\nto the victim's application using these ciphers.\n\nAES-SIV (RFC 5297) and AES-GCM-SIV (RFC 8452) are nonce-misuse-resistant AEAD\nmodes: they accept a key, nonce, optional AAD (bytes that are authenticated\nbut not encrypted), and plaintext, and produces ciphertext plus a 16-byte\ntag. On decrypt, `EVP_DecryptFinal_ex()` is documented to return success only\nif the tag is verified succesfully.\n\nIn OpenSSL's provider implementation of these ciphers, the expected tag is\ncomputed only when decryption function is invoked with non-empty data.\nIf the caller supplies AAD and then calls `EVP_DecryptFinal_ex()` without\ninvocation of the ciphertext update, which can happen when the received\nciphertext length is zero, the tag is never recalculated and still holds its\nall-zeros value.\n\nWhen AES-GCM-SIV is used, an attacker who sends arbitrary AAD, empty\nciphertext, and all-zeros tag passes authentication under any key they do not\nknow, single-shot. When AES-SIV is used, for mounting the attack it's\nnecessary for the application to reuse the decryption context without\nresetting the key.\n\nAES-SIV is implemented since OpenSSL 3.0. AES-GCM-SIV is implemented since\nOpenSSL 3.2.\n\nNo protocols implemented in OpenSSL itself (TLS/CMS/PKCS7/HPKE/QUIC) support\neither AES-GCM-SIV or AES-SIV. To mount an attack, the applications must\nimplement their own protocol and use the EVP interface. Also they must skip the\nciphertext update when a message with an empty ciphertext arrives.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this\nissue, as these algorithms are not FIPS approved and the affected code is\noutside the OpenSSL FIPS module boundary.",
           "Severity": "LOW",
@@ -4117,6 +4173,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-45446",
             "https://bugzilla.redhat.com/2481879",
@@ -4165,7 +4222,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-7phf-qpm5-q6p3",
             "https://github.com/openssl/openssl/commit/25b32cd9d41d2bc01b6abc425bb4baf2c2236fdc",
@@ -4209,7 +4266,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:6a9eb42e0075332fee53089566af6af91e437e1594bfe5b935725b2f78c624f2",
+          "Fingerprint": "sha256:02b664e172dca6c83aa78004957dfbd94d3928617e6a1b3a294570e78e29247d",
           "Title": "openssl: OpenSSL: Heap buffer overflow due to signed integer overflow in Unicode output sizing",
           "Description": "Issue summary: A signed integer overflow when sizing the destination\nbuffer for Unicode output in ASN1_mbstring_ncopy() can lead to a heap\nbuffer overflow.\n\nImpact summary: A heap buffer overflow may lead to a crash or possibly\nattacker controlled code execution or other undefined behaviour.\n\nIn ASN1_mbstring_copy() and ASN1_mbstring_ncopy() the destination\nsize for Unicode output is computed in a signed int: by left shift\nof the input character count for BMPSTRING (UTF-16) and\nUNIVERSALSTRING (UTF-32), and by summing per-character byte counts\nfor UTF8STRING. The calculation overflows when the input reaches\naround 2^30 characters. In the worst case (UNIVERSALSTRING at 2^30\ncharacters) the size wraps to zero, OPENSSL_malloc(1) is called, and\nthe subsequent character copy writes several gigabytes past the\none-byte allocation.\n\nX.509 certificate processing routes through ASN1_STRING_set_by_NID(),\nwhose DIRSTRING_TYPE mask excludes UNIVERSALSTRING and whose per-NID\nsize limits cap the input length; no network protocol or\ncertificate-handling path in OpenSSL exercises the overflow.\nTriggering the bug requires an application that calls\nASN1_mbstring_copy() or ASN1_mbstring_ncopy() directly, or registers\na custom string type via ASN1_STRING_TABLE_add(), with\nattacker-controlled input on the order of half a gigabyte or more.\nFor these reasons this issue was assigned Low severity.\n\nThe FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by\nthis issue, as the affected code is outside the OpenSSL FIPS module\nboundary.",
           "Severity": "LOW",
@@ -4238,6 +4295,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-7383",
             "https://bugzilla.redhat.com/2481879",
@@ -4286,7 +4344,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-w853-v86g-gv7j",
             "https://github.com/openssl/openssl/commit/4f8d2bddaa2c8e06f9c33390ee1717059a6e4be6",
@@ -4331,7 +4389,7 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Fingerprint": "sha256:b1b6805255fba055acb8d587e5508854037ffe6f73c5068fb9d1085d7741f577",
+          "Fingerprint": "sha256:0e7a0b82cc4e52812a82f64754a1743b2c3b0a5eaa21edadd7b2dc5996023c17",
           "Title": "openssl: OpenSSL: Denial of Service due to heap out-of-bounds read in CMS password-based decryption",
           "Description": "Issue summary: When CMS password-based decryption (RFC 3211 / PWRI key unwrap)\nprocesses attacker-supplied CMS data, an attacker-chosen stream-mode KEK\ncipher can trigger a heap out-of-bounds read in kek_unwrap_key().\n\nImpact summary: A heap buffer over-read may trigger a crash which leads to\nDenial of Service for an application if the input buffer ends at a memory\npage boundary and the following page is unmapped. There is no information\ndisclosure as the over-read bytes are not revealed to the attacker.\n\nThe key unwrapping function performs a check-byte test as specified in the\nRFC that reads 7 bytes from a heap allocation that is based on the wrapped\nkey length from the message. There is a minimum length check based on the\nblock length of the wrapping cipher. However the cipher is selected from\nan OID carried in the attacker's PWRI keyEncryptionAlgorithm with no\nrequirement that the cipher be a block cipher. When an attacker selects\na stream-mode cipher the guard will be ineffective and the allocated buffer\ncontaining the unwrapped key can be too small to fit the check-bytes\nspecified in the RFC and a buffer over-read can happen.\n\nApplications calling CMS_decrypt() or CMS_decrypt_set1_password()\n(equivalently openssl cms -decrypt -pwri_password ...) on untrusted CMS\ndata are vulnerable to this issue. No password knowledge is required: the\nover-read happens during the unwrap attempt before any authentication\nsucceeds.\n\nThe over-read is limited to a few bytes and is not written to output, so\nthere is no information disclosure. Triggering a crash requires the\nallocation to border unmapped memory, which is unlikely with the normal\nallocator.\n\nThe FIPS modules are not affected by this issue.",
           "Severity": "LOW",
@@ -4360,6 +4418,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:25237",
             "https://access.redhat.com/errata/RHSA-2026:25239",
             "https://access.redhat.com/security/cve/CVE-2026-9076",
             "https://bugzilla.redhat.com/2481879",
@@ -4408,7 +4467,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45447",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7383",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9076",
-            "https://errata.almalinux.org/9/ALSA-2026-25239.html",
+            "https://errata.almalinux.org/10/ALSA-2026-25237.html",
             "https://errata.rockylinux.org/RLSA-2026:25239",
             "https://github.com/advisories/GHSA-q98x-73c3-57gj",
             "https://github.com/openssl/openssl/commit/05b066366842f930fadd9a6e94df98030af431bb",
@@ -12794,7 +12853,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -12812,7 +12872,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/a1bd33999ea75262c4749fff3bbb0d1372bd07b5",
@@ -12869,7 +12937,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -12887,7 +12956,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/a1bd33999ea75262c4749fff3bbb0d1372bd07b5",
@@ -12944,7 +13021,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -12962,7 +13040,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/a1bd33999ea75262c4749fff3bbb0d1372bd07b5",
@@ -13033,17 +13119,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:52841",
             "https://access.redhat.com/errata/RHSA-2026:55541",
             "https://access.redhat.com/security/cve/CVE-2026-69152",
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
             "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
-            "https://errata.rockylinux.org/RLSA-2026:52841",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/1e30c930238d7162802d88a94189182def178dac",
@@ -13110,17 +13199,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:52841",
             "https://access.redhat.com/errata/RHSA-2026:55541",
             "https://access.redhat.com/security/cve/CVE-2026-69152",
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
             "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
-            "https://errata.rockylinux.org/RLSA-2026:52841",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/1e30c930238d7162802d88a94189182def178dac",
@@ -13187,17 +13279,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:52841",
             "https://access.redhat.com/errata/RHSA-2026:55541",
             "https://access.redhat.com/security/cve/CVE-2026-69152",
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
             "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
-            "https://errata.rockylinux.org/RLSA-2026:52841",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/1e30c930238d7162802d88a94189182def178dac",
@@ -13268,6 +13363,7 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:47058",
+            "https://access.redhat.com/errata/RHSA-2026:48034",
             "https://access.redhat.com/security/cve/CVE-2026-13149",
             "https://bugzilla.redhat.com/2494813",
             "https://bugzilla.redhat.com/2498116",
@@ -13279,7 +13375,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13149",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59873",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59874",
-            "https://errata.almalinux.org/9/ALSA-2026-47058.html",
+            "https://errata.almalinux.org/10/ALSA-2026-48034.html",
             "https://errata.rockylinux.org/RLSA-2026:47058",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/835d6be91201122d9adffb0c0c8c094189ace265",
@@ -13338,7 +13434,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -13356,7 +13453,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/a1bd33999ea75262c4749fff3bbb0d1372bd07b5",
@@ -13427,17 +13532,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:52841",
             "https://access.redhat.com/errata/RHSA-2026:55541",
             "https://access.redhat.com/security/cve/CVE-2026-69152",
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
             "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
-            "https://errata.rockylinux.org/RLSA-2026:52841",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/1e30c930238d7162802d88a94189182def178dac",
@@ -13632,7 +13740,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -13650,7 +13759,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/a1bd33999ea75262c4749fff3bbb0d1372bd07b5",
@@ -13721,17 +13838,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:52841",
             "https://access.redhat.com/errata/RHSA-2026:55541",
             "https://access.redhat.com/security/cve/CVE-2026-69152",
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
             "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
-            "https://errata.rockylinux.org/RLSA-2026:52841",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/juliangruber/brace-expansion",
             "https://github.com/juliangruber/brace-expansion/commit/139d015104e71433ad52a41d19467c48ecbb2c7d",
             "https://github.com/juliangruber/brace-expansion/commit/1e30c930238d7162802d88a94189182def178dac",
@@ -13979,7 +14099,8 @@
             "alma": 3,
             "ghsa": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "ghsa": {
@@ -13997,7 +14118,15 @@
             "https://bugzilla.redhat.com/2506433",
             "https://bugzilla.redhat.com/2510722",
             "https://bugzilla.redhat.com/2510801",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2506433",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510722",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2510801",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14257",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69152",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-69192",
             "https://errata.almalinux.org/10/ALSA-2026-55541.html",
+            "https://errata.rockylinux.org/RLSA-2026:55541",
             "https://github.com/beaugunderson/ip-address",
             "https://github.com/beaugunderson/ip-address/commit/56368cb3d66c73ba0ee9b6b834fd31b22c2fd71e",
             "https://github.com/beaugunderson/ip-address/releases/tag/v10.3.1",
@@ -14088,6 +14217,7 @@
             "https://access.redhat.com/errata/RHSA-2026:44267",
             "https://access.redhat.com/errata/RHSA-2026:51200",
             "https://access.redhat.com/errata/RHSA-2026:52399",
+            "https://access.redhat.com/errata/RHSA-2026:56928",
             "https://access.redhat.com/security/cve/CVE-2026-42338",
             "https://bugzilla.redhat.com/2476810",
             "https://bugzilla.redhat.com/2489980",
@@ -14129,7 +14259,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-48935",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6733",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-9678",
-            "https://errata.almalinux.org/9/ALSA-2026-35892.html",
+            "https://errata.almalinux.org/10/ALSA-2026-35842.html",
             "https://errata.rockylinux.org/RLSA-2026:35892",
             "https://github.com/beaugunderson/ip-address",
             "https://github.com/beaugunderson/ip-address/security/advisories/GHSA-v2v4-37r5-5v8g",
@@ -14140,7 +14270,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-42338"
           ],
           "PublishedDate": "2026-05-12T20:16:41.13Z",
-          "LastModifiedDate": "2026-08-19T12:18:15.793Z"
+          "LastModifiedDate": "2026-08-20T13:18:31.927Z"
         },
         {
           "VulnerabilityID": "GHSA-5p4m-2wfm-xmqj",
@@ -14241,12 +14371,27 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:7675",
             "https://access.redhat.com/errata/RHSA-2026:7896",
             "https://access.redhat.com/security/cve/CVE-2026-26996",
+            "https://bugzilla.redhat.com/2431340",
+            "https://bugzilla.redhat.com/2436942",
             "https://bugzilla.redhat.com/2441268",
-            "https://bugzilla.redhat.com/2442922",
+            "https://bugzilla.redhat.com/2447140",
+            "https://bugzilla.redhat.com/2447141",
+            "https://bugzilla.redhat.com/2447142",
+            "https://bugzilla.redhat.com/2447143",
+            "https://bugzilla.redhat.com/2447144",
+            "https://bugzilla.redhat.com/2447145",
             "https://bugzilla.redhat.com/2448754",
+            "https://bugzilla.redhat.com/2453037",
             "https://bugzilla.redhat.com/2453151",
+            "https://bugzilla.redhat.com/2453152",
+            "https://bugzilla.redhat.com/2453157",
+            "https://bugzilla.redhat.com/2453158",
+            "https://bugzilla.redhat.com/2453160",
+            "https://bugzilla.redhat.com/2453161",
+            "https://bugzilla.redhat.com/2453162",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2441268",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2442922",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2448754",
@@ -14256,7 +14401,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-26996",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27135",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27904",
-            "https://errata.almalinux.org/9/ALSA-2026-7896.html",
+            "https://errata.almalinux.org/10/ALSA-2026-7675.html",
             "https://errata.rockylinux.org/RLSA-2026:7896",
             "https://github.com/isaacs/minimatch",
             "https://github.com/isaacs/minimatch/commit/2e111f3a79abc00fa73110195de2c0f2351904f5",
@@ -14378,10 +14523,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:7080",
             "https://access.redhat.com/errata/RHSA-2026:7896",
             "https://access.redhat.com/security/cve/CVE-2026-27904",
+            "https://bugzilla.redhat.com/2436942",
             "https://bugzilla.redhat.com/2441268",
             "https://bugzilla.redhat.com/2442922",
+            "https://bugzilla.redhat.com/2447142",
+            "https://bugzilla.redhat.com/2447143",
+            "https://bugzilla.redhat.com/2447144",
+            "https://bugzilla.redhat.com/2447145",
             "https://bugzilla.redhat.com/2448754",
             "https://bugzilla.redhat.com/2453151",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2441268",
@@ -14393,7 +14544,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-26996",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27135",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27904",
-            "https://errata.almalinux.org/9/ALSA-2026-7896.html",
+            "https://errata.almalinux.org/10/ALSA-2026-7080.html",
             "https://errata.rockylinux.org/RLSA-2026:7896",
             "https://github.com/isaacs/minimatch",
             "https://github.com/isaacs/minimatch/commit/11d0df6165d15a955462316b26d52e5efae06fce",
@@ -14636,6 +14787,7 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:47058",
+            "https://access.redhat.com/errata/RHSA-2026:48034",
             "https://access.redhat.com/security/cve/CVE-2026-59873",
             "https://bugzilla.redhat.com/2494813",
             "https://bugzilla.redhat.com/2498116",
@@ -14647,7 +14799,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13149",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59873",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59874",
-            "https://errata.almalinux.org/9/ALSA-2026-47058.html",
+            "https://errata.almalinux.org/10/ALSA-2026-48034.html",
             "https://errata.rockylinux.org/RLSA-2026:47058",
             "https://github.com/isaacs/node-tar",
             "https://github.com/isaacs/node-tar/commit/2812e9338665659b183aa7226518c307044957d3",
@@ -14744,7 +14896,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23745",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23950",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24842",
-            "https://errata.almalinux.org/9/ALSA-2026-18868.html",
+            "https://errata.almalinux.org/10/ALSA-2026-18480.html",
             "https://errata.rockylinux.org/RLSA-2026:18868",
             "https://github.com/isaacs/node-tar",
             "https://github.com/isaacs/node-tar/commit/340eb285b6d986e91969a1170d7fe9b0face405e",
@@ -14756,7 +14908,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-23745"
           ],
           "PublishedDate": "2026-01-16T22:16:26.83Z",
-          "LastModifiedDate": "2026-08-19T12:17:26.54Z"
+          "LastModifiedDate": "2026-08-20T13:17:07.96Z"
         },
         {
           "VulnerabilityID": "CVE-2026-23950",
@@ -14839,7 +14991,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23745",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23950",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24842",
-            "https://errata.almalinux.org/9/ALSA-2026-18868.html",
+            "https://errata.almalinux.org/10/ALSA-2026-18480.html",
             "https://errata.rockylinux.org/RLSA-2026:18868",
             "https://github.com/isaacs/node-tar",
             "https://github.com/isaacs/node-tar/commit/3b1abfae650056edfabcbe0a0df5954d390521e6",
@@ -14929,7 +15081,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23745",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23950",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24842",
-            "https://errata.almalinux.org/9/ALSA-2026-18868.html",
+            "https://errata.almalinux.org/10/ALSA-2026-18480.html",
             "https://errata.rockylinux.org/RLSA-2026:18868",
             "https://github.com/isaacs/node-tar",
             "https://github.com/isaacs/node-tar/commit/f4a7aa9bc3d717c987fdf1480ff7a64e87ffdb46",
@@ -15198,6 +15350,7 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:47058",
+            "https://access.redhat.com/errata/RHSA-2026:48034",
             "https://access.redhat.com/security/cve/CVE-2026-59874",
             "https://bugzilla.redhat.com/2494813",
             "https://bugzilla.redhat.com/2498116",
@@ -15209,7 +15362,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13149",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59873",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59874",
-            "https://errata.almalinux.org/9/ALSA-2026-47058.html",
+            "https://errata.almalinux.org/10/ALSA-2026-48034.html",
             "https://errata.rockylinux.org/RLSA-2026:47058",
             "https://github.com/isaacs/node-tar",
             "https://github.com/isaacs/node-tar/commit/9e78bf058b2c22dd4d52e00d8922d5c06fc2f7b5",
