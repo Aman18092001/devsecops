@@ -1,0 +1,270 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION          = "ap-south-1"
+        EKS_CLUSTER_NAME    = "devsecops-cluster"
+        DOCKER_USER_NAME    = "amanece20192022"
+        DOCKER_IMAGE_NAME   = "devsecops"
+        DEPLOY_ENV          = "dev"
+        AWS_CREDS_ID        = "aws_credentials_dev"
+        
+        // Dynamic image tags
+        IMAGE_BUILD_TAG     = "${DOCKER_USER_NAME}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+        IMAGE_LATEST_TAG    = "${DOCKER_USER_NAME}/${DOCKER_IMAGE_NAME}:latest"
+    }
+
+    stages {
+        stage('SCM') {
+            steps {
+                echo 'Pulling latest code from GitHub...'
+                git branch: 'main', url: 'https://github.com/Aman18092001/devsecops.git'
+            }
+        }
+
+        stage('Secret Scanning (Gitleaks)') {
+            steps {
+                echo 'Scanning repository for hardcoded secrets...'
+                sh '''
+                mkdir -p security-gate/reports
+
+                docker run --rm \
+                    -v $(pwd):/path \
+                    zricethezav/gitleaks:latest \
+                    detect --source="/path" \
+                    --report-format=json \
+                    --report-path=/path/security-gate/reports/gitleaks-report.json \
+                    --exit-code=0 || true
+
+                sudo chown -R $(id -u):$(id -g) security-gate/reports || true
+                '''
+                archiveArtifacts artifacts: 'security-gate/reports/gitleaks-report.json', allowEmptyArchive: true
+            }
+        }        
+
+        stage('Docker Login') {
+            steps {
+                withCredentials([file(credentialsId: 'docker_token', variable: 'DOCKER_TOKEN')]) {
+                    echo 'Logging into Docker Hub...'
+                    sh 'cat "${DOCKER_TOKEN}" | docker login -u ${DOCKER_USER_NAME} --password-stdin'
+                }
+            }
+        }
+
+        stage('SAST (Semgrep)') {
+            steps {
+                echo 'Running Semgrep SAST scan on source code...'
+                sh '''
+                mkdir -p security-gate/reports
+
+                docker run --rm \
+                    -v $(pwd):/src \
+                    semgrep/semgrep \
+                    semgrep scan --config auto --json -o /src/security-gate/reports/semgrep-report.json || true
+
+                sudo chown -R $(id -u):$(id -g) security-gate/reports || true
+                '''
+                archiveArtifacts artifacts: 'security-gate/reports/semgrep-report.json', allowEmptyArchive: true
+            }
+        }      
+
+        stage('Lint Dockerfile (Hadolint)') {
+            steps {
+                echo 'Linting Dockerfile with Hadolint...'
+                sh '''
+                mkdir -p security-gate/reports
+
+                docker run --rm -i \
+                    hadolint/hadolint:latest-alpine \
+                    hadolint -f json - < Dockerfile > security-gate/reports/hadolint-report.json || true
+
+                sudo chown -R $(id -u):$(id -g) security-gate/reports || true
+                '''
+                archiveArtifacts artifacts: 'security-gate/reports/hadolint-report.json', allowEmptyArchive: true
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker images..."
+                sh '''
+                docker build -t ${IMAGE_BUILD_TAG} .
+                docker tag ${IMAGE_BUILD_TAG} ${IMAGE_LATEST_TAG}
+                '''
+            }
+        }
+
+        stage('Security Scan (Trivy)') {
+            steps {
+                sh '''
+                mkdir -p security-gate/reports
+                trivy image \
+                    --format json \
+                    -o security-gate/reports/trivy-report.json \
+                    ${IMAGE_BUILD_TAG} || true
+                '''
+                archiveArtifacts artifacts: 'security-gate/reports/trivy-report.json'
+            }
+        }
+
+        stage('Risk Score') {
+            steps {
+                sh 'python3 security-gate/risk_scorer.py || true'
+                archiveArtifacts artifacts: 'security-gate/reports/score.json', allowEmptyArchive: true
+            }
+        }
+
+        stage('Copy Reports') {
+            steps {
+                sh '''
+                mkdir -p /home/ubuntu/devsecops/security-gate/reports/
+                cp -f security-gate/reports/*.json /home/ubuntu/devsecops/security-gate/reports/ || true
+                '''
+            }
+        }        
+
+        stage('Policy Check') {
+            steps {
+                sh 'python3 security-gate/policy.py || true'
+            }
+        }        
+
+        stage('Push Docker Image') {
+            steps {
+                echo "Pushing images to Docker Hub with retry mechanism..."
+                sh '''
+                retry_push() {
+                    local image=$1
+                    local max_retries=3
+                    local count=0
+                    until docker push "${image}"; do
+                        count=$((count + 1))
+                        if [ $count -ge $max_retries ]; then
+                            echo "[-] Failed to push ${image} after ${max_retries} attempts."
+                            exit 1
+                        fi
+                        echo "[!] Docker push failed with server error. Retrying in 10 seconds... (Attempt $count/$max_retries)"
+                        sleep 10
+                    done
+                }
+
+                retry_push "${IMAGE_BUILD_TAG}"
+                retry_push "${IMAGE_LATEST_TAG}"
+                '''
+            }
+        }
+
+        stage('Deploy to AWS EKS') {
+            steps {
+                echo "Deploying application to EKS cluster in environment: ${DEPLOY_ENV}"
+
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: env.AWS_CREDS_ID,
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                    # 1. Authenticate with EKS Cluster
+                    aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
+
+                    # 2. Ensure target namespace and RBAC are configured
+                    kubectl create namespace ${DEPLOY_ENV} || true
+                    kubectl apply -f k8s/rbac.yaml
+
+                    # 3. Apply deployment and load balancer service
+                    kubectl apply -f k8s/deployment1.yaml -n ${DEPLOY_ENV}
+
+                    # 4. Update deployment to use newly built image tag
+                    kubectl set image deployment/devsecops-app devsecops-app=${IMAGE_BUILD_TAG} -n ${DEPLOY_ENV}
+
+                    # 5. Verify rolling update status
+                    kubectl rollout status deployment/devsecops-app -n ${DEPLOY_ENV}
+                    '''
+                }
+            }
+        }
+
+        stage('Prometheus & Health Verification') {
+            steps {
+                echo 'Checking EKS pod metrics & deployment health...'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: env.AWS_CREDS_ID,
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                    # 1. Update kubeconfig inside credentials context
+                    aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
+
+                    # 2. Apply monitoring manifest if present
+                    if [ -f "k8s/monitoring.yaml" ]; then
+                        kubectl apply -f k8s/monitoring.yaml
+                    else
+                        echo "[!] k8s/monitoring.yaml not found, skipping apply..."
+                    fi
+
+                    # 3. Check deployment replica readiness
+                    READY_PODS=$(kubectl get deployment devsecops-app -n ${DEPLOY_ENV} -o jsonpath='{.status.readyReplicas}')
+                    
+                    if [ -z "$READY_PODS" ] || [ "$READY_PODS" -lt 1 ]; then
+                        echo "[-] Health Check Failed: 0 ready replicas found."
+                        exit 1
+                    fi
+
+                    echo "[+] Health Check Passed: ${READY_PODS} ready replica(s) active."
+                    '''
+                }
+            }
+        }
+        stage('OWASP ZAP Scan') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: env.AWS_CREDS_ID,
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                    mkdir -p security-gate/reports
+                    rm -f security-gate/reports/zap*
+
+                    # Fetch external IP / hostname of EKS LoadBalancer
+                    SERVICE_URL=$(kubectl get svc devsecops-service -n ${DEPLOY_ENV} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
+                    if [ -z "$SERVICE_URL" ]; then
+                        SERVICE_URL=$(kubectl get svc devsecops-service -n ${DEPLOY_ENV} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+                    fi
+
+                    echo "Scanning live endpoint: http://${SERVICE_URL}"
+
+                    docker run --rm \
+                      --user root \
+                      -v $(pwd)/security-gate/reports:/zap/wrk:rw \
+                      ghcr.io/zaproxy/zaproxy:stable \
+                      zap-baseline.py \
+                      -t http://${SERVICE_URL} \
+                      -J zap-report.json \
+                      -r zap-report.html -I || true
+
+                    sudo chown -R $(id -u):$(id -g) security-gate/reports || true
+                    '''
+                }
+            }
+        }
+
+        stage('Compliance Audit & MySQL Logging') {
+            steps {
+                echo 'Executing Compliance Check and Logging Results to Database...'
+                sh 'python3 security-gate/parse_and_log.py ${BUILD_NUMBER}'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'security-gate/reports/*', allowEmptyArchive: true
+        }
+    }
+}
